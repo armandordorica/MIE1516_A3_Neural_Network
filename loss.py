@@ -30,7 +30,7 @@ class MSELoss(Loss):
 
     def diff_loss(self, pred, target):
         ########## (E4) Your code goes here ##########
-        delta =
+        delta = np.square(np.subtract(target,pred)).mean()
         return delta
         ##########            end           ##########
 
@@ -43,14 +43,14 @@ class CrossEntropyLoss(Loss):
     def loss(self, pred, target):
         pred = softmax(pred)
         ########## (E4) Your code goes here ##########
-        loss =
+        loss = -np.sum((target * pred))/len(self.input_data)
         return loss
         ##########            end           ##########
 
     def diff_loss(self, pred, target):
         ########## (E4) Your code goes here ##########
         pred = softmax(pred)
-        delta =
+        delta = target - pred
         return delta
         ##########            end           ##########
 
