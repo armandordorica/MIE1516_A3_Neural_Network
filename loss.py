@@ -24,13 +24,13 @@ class Loss(ABC):
 class MSELoss(Loss):
     def loss(self, pred, target):
         ########## (E4) Your code goes here ##########
-        loss =
+        loss =np.square(np.subtract(target,pred)).mean()
         return loss
         ##########            end           ##########
 
     def diff_loss(self, pred, target):
         ########## (E4) Your code goes here ##########
-        delta = np.square(np.subtract(target,pred)).mean()
+        delta = (-2//len(target))* (target-pred)
         return delta
         ##########            end           ##########
 
