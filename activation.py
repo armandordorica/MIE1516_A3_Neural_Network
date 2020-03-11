@@ -1,6 +1,9 @@
 from layer import Layer
 import numpy as np
 
+from utils import sigmoid_prime
+
+
 class Activation(Layer):
     def __init__(self, act, act_prime):
         """
@@ -30,7 +33,7 @@ class Activation(Layer):
         :return:                (numpy.ndarray, shape=[batch_size, # nodes]) delta to pass on to the previous layer
         """
         ########## (E3) Your code goes here ##########
-        delta =
+        delta = np.multiply(delta_n, sigmoid_prime(self.input_data))
         ##########            end           ##########
 
         return delta

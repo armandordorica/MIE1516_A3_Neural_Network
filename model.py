@@ -52,7 +52,10 @@ class NeuralNetwork:
         :param mode:        (bool) set to True during forward pass in training; False when testing.
         :return:            (numpy.ndarray) the output from the output layer.
         """
+        print("inside predict method...\n")
         out = input_data
+        print("input_data from predict method: {}\n".format(out))
+
 
         # Feed forward
         for l in self.layers:
@@ -70,4 +73,7 @@ class NeuralNetwork:
 
         # Backpropagate the errors
         for l in reversed(self.layers):
+            print("delta from cross entropy diff_loss is:{} \n".format(delta))
+            print("...................")
+            print("Shape of delta from cross entropy diff_loss is:{} ".format(delta.shape))
             delta = l.backward(delta)

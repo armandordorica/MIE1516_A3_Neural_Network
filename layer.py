@@ -55,8 +55,12 @@ class FCLayer(Layer):
         n = input_data.shape[0]             # size of mini-batch
         self.input_data = input_data        # store the input as attribute (to use in backpropagation)
 
+        print("Input data:{}".format(input_data))
+        print("self.weights: {}".format(self.weights))
+        print("self.bias:{}".format(self.bias))
+
         ########## (E2) Your code goes here ##########
-        output = np.dot(self.input_data, self.weights) + self.bias
+        output = np.dot(self.input_data, self.weights.value) + self.bias.value
         ##########            end           ##########
 
         return output
@@ -68,9 +72,9 @@ class FCLayer(Layer):
         :return delta:          (numpy.ndarray, shape=[batch_size, in]) delta to be passed to the previous layer
         """
         ########## (E2) Your code goes here ##########
-        delta =
-        dEdW =
-        dEdb =
+        delta = np.dot(delta_n, self.weights.value.T)
+        dEdW = np.dot(delta_n, self.weights.value.T)
+        dEdb = np.dot(np.ones(list(delta_n.shape)[0]).T, delta_n)
         ##########            end           ##########
 
         # Store gradients

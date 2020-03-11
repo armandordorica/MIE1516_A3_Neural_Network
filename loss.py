@@ -43,7 +43,7 @@ class CrossEntropyLoss(Loss):
     def loss(self, pred, target):
         pred = softmax(pred)
         ########## (E4) Your code goes here ##########
-        loss = -np.sum((target * pred))/len(self.input_data)
+        loss = -np.sum([target[i]*np.log(pred[i]) for i in range(len(target))])
         return loss
         ##########            end           ##########
 
