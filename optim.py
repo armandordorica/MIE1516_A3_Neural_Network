@@ -90,8 +90,15 @@ class SGD(Optimizer):
                 # Implement Nesterov accelarted gradient
                 ########## (E5) Your code goes here ##########
                 else:
-                    param.velocity =
-                    descent =
+                    param.velocity =  self.mu * v_prev + param.grad
+                    descent = param.grad * self.learning_rate - param.velocity *self.mu * self.learning_rate
+
+
+                    #reference: https://github.com/hero9968/PaddlePaddle-book/blob/1ff47b284c565d030b198705d5f18b4bd4ce53e5/python/paddle/v2/fluid/tests/test_momentum_op.py
+                    # param - grad * learning_rate - \
+                    # velocity_out * mu * learning_rate
+                    #velocity[layer] = gamma * velocity[layer] + alpha * grad[layer]
+                    # model[layer] += velocity[layer]
                 ##########            end           ##########
 
             # ordinary gradient descent (w/o momentum)
