@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/E6_autoencoder-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/E6_autoencoder-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/E6_autoencoder.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/E6_autoencoder.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/E7_regression.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/E7_regression.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/E8_mnist_classification.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/E8_mnist_classification.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/activation.py" beforeDir="false" afterPath="$PROJECT_DIR$/activation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/layer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/loss.py" afterDir="false" />
@@ -57,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583888150679</updated>
-      <workItem from="1583888155785" duration="23970000" />
+      <workItem from="1583888155785" duration="30332000" />
     </task>
     <servers />
   </component>

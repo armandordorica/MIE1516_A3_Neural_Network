@@ -6,35 +6,35 @@ from utils import sigmoid_prime
 
 class Activation(Layer):
     def __init__(self, act, act_prime):
-        print("Inside of Activation layer...")
+        # print("Inside of Activation layer...")
         """
         :param act:             (function) activation function
         :param act_prime:       (function) derivative of the activation function
         """
-        print("Activation Layer created with act: {} and act_prime: {}".format(act, act_prime))
+        # print("Activation Layer created with act: {} and act_prime: {}".format(act, act_prime))
         self.act = act
         self.act_prime = act_prime
-        print("..................................................................\n")
+        # print("..................................................................\n")
 
     def forward(self, input_data, mode):
-        print("Inside forward method of Activation Layer ")
+        # print("Inside forward method of Activation Layer ")
         """
         :param input_data:      (numpy.ndarray, shape=[batch_size, # nodes]) output from the previous FCLayer
         :return: output:        (numpy.ndarray, shape=[batch_size, # nodes])
         """
         self.input_data = input_data
-        print("Shape of input_data:{}".format(input_data.shape))
+        # print("Shape of input_data:{}".format(input_data.shape))
 
         ########## (E3) Your code goes here ##########
         self.output = self.act(self.input_data)
         output = self.act(self.input_data)
-        print("Shape of output:{}".format(output.shape))
+        # print("Shape of activation output (H):{}".format(output.shape))
         ##########            end           ##########
 
         return output
 
     def backward(self, delta_n):
-        print("Inside backward method of Activation Layer ")
+        # print("Inside backward method of Activation Layer ")
 
         """
         Compute and pass the delta to the previous layer
@@ -42,8 +42,8 @@ class Activation(Layer):
         :return:                (numpy.ndarray, shape=[batch_size, # nodes]) delta to pass on to the previous layer
         """
         ########## (E3) Your code goes here ##########
-        print("self is of type: {}".format(type(self)))
-        print("Input delta has shape:{}".format(delta_n.shape))
+        # print("self is of type: {}".format(type(self)))
+        # print("Input delta has shape:{}".format(delta_n.shape))
         delta = np.multiply(delta_n, sigmoid_prime(self.input_data))
         #delta  =  derivative of the loss * sigmoid prime(layer)
 
@@ -54,7 +54,7 @@ class Activation(Layer):
 
 class Dropout(Layer):
     def __init__(self, drop_prob=0.5):
-        print("Inside initialization of Dropout Layer ")
+        # print("Inside initialization of Dropout Layer ")
         """
         Dropout is defined as a Layer object for which forward and backward pass should be specified.
         Note that this is so-called 'inverted Dropout' which takes care of scale of outputs in the forward pass.
@@ -64,7 +64,7 @@ class Dropout(Layer):
         self.drop_prob = drop_prob
 
     def forward(self, input_data, mode):
-        print("Inside forward method of Dropout Layer")
+        # print("Inside forward method of Dropout Layer")
         """
         Forward pass along the Dropout Layer
         :param input_data:      (numpy.ndarray) output from the previous layer
@@ -78,5 +78,5 @@ class Dropout(Layer):
             return input_data
 
     def backward(self, delta_n):
-        print("Inside backward method of Dropout Layer")
+        # print("Inside backward method of Dropout Layer")
         return delta_n * self.mask

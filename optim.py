@@ -90,8 +90,8 @@ class SGD(Optimizer):
                 # Implement Nesterov accelarted gradient
                 ########## (E5) Your code goes here ##########
                 else:
-                    print("param.grad is: {}".format(param.grad))
-                    print("v_prev is: {}".format(v_prev))
+                    # print("param.grad is: {}".format(param.grad))
+                    # print("v_prev is: {}".format(v_prev))
                     param.velocity =  self.mu * v_prev + param.grad
                     descent = param.grad * self.learning_rate - param.velocity *self.mu * self.learning_rate
 
@@ -116,7 +116,7 @@ class Adam(Optimizer):
                  beta2=0.999,
                  eps=1e-8,
                  clipvalue=None):
-        print("Initializing an Adam optimizer with learning rate: {} ...".format(lr))
+        # print("Initializing an Adam optimizer with learning rate: {} ...".format(lr))
         """
         An Adam optimizer
         :param parameters:          (list) list of Paramters of the neural network
@@ -131,11 +131,11 @@ class Adam(Optimizer):
 
         # Initialize Parameter.m_t and Parameter.v_t: moving average of first and second moments of gradient
         for param in self.param_lst:
-            print("There are {} elements in param_lst".format(len(self.param_lst)))
+            # print("There are {} elements in param_lst".format(len(self.param_lst)))
             param.m_t = np.zeros(param.shape, dtype=np.float32)
-            print("param.m_t: {}".format(param.m_t))
+            # print("param.m_t: {}".format(param.m_t))
             param.v_t = np.zeros(param.shape, dtype=np.float32)
-            print("param.v_t: {}".format(param.v_t))
+            # print("param.v_t: {}".format(param.v_t))
             param.step = 0
         self.beta1 = beta1
         self.beta2 = beta2
@@ -148,10 +148,10 @@ class Adam(Optimizer):
             bias_correction1 = 1 - self.beta1 ** param.step
             bias_correction2 = 1 - self.beta2 ** param.step
 
-            print("type of self.beta1 shape is:{}".format(type(self.beta1)))
-            print("self.beta1 = {}".format(self.beta1))
-            print("param.m_t shape is:{}".format(param.m_t.shape))
-            print("param.grad shape is:{}".format(param.grad.shape))
+            # print("type of self.beta1 shape is:{}".format(type(self.beta1)))
+            # print("self.beta1 = {}".format(self.beta1))
+            # print("param.m_t shape is:{}".format(param.m_t.shape))
+            # print("param.grad shape is:{}".format(param.grad.shape))
             param.m_t = self.beta1 * param.m_t + (1 - self.beta1) * param.grad
             param.v_t = self.beta2 * param.v_t + (1 - self.beta2) * (param.grad**2)
 
