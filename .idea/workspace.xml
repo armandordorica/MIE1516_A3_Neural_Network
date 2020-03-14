@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="256b255c-fc18-4974-a11e-b0a4d21272f8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/neural-net.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/neural-net.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/E6_autoencoder-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/E6_autoencoder-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/E6_autoencoder.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/E6_autoencoder.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/E7_regression.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/E7_regression.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/E8_mnist_classification.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/E8_mnist_classification.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/activation.py" beforeDir="false" afterPath="$PROJECT_DIR$/activation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/layer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/loss.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optim.py" beforeDir="false" afterPath="$PROJECT_DIR$/optim.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +46,30 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="neural-net" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -59,6 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1583888150679</updated>
       <workItem from="1583888155785" duration="30332000" />
+      <workItem from="1584208999773" duration="4800000" />
     </task>
     <servers />
   </component>
@@ -70,7 +93,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

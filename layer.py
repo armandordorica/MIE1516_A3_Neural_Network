@@ -48,6 +48,8 @@ class FCLayer(Layer):
             weights = np.random.randn(input_size, output_size)
             bias = np.random.randn(1, output_size)
 
+
+
         self.weights = Parameter(weights)               # instantiate Parameter object by passing the initialized values
         self.bias = Parameter(bias)                     # instantiate Parameter object by passing the initialized values
         self.param = [self.weights, self.bias]
@@ -91,6 +93,8 @@ class FCLayer(Layer):
         first_term  = np.dot(self.input_data, self.weights.value)
         second_term = np.dot(np.ones((n, 1)),self.bias.value)
         output = np.dot(self.input_data, self.weights.value) + np.dot(np.ones((n, 1)),self.bias.value)
+        # print("Weights are:{}".format(self.weights.value))
+        # print("Output(U):{}".format(output))
         self.output = output
         # print("Shape of the forward output (U): {}".format(output.shape))
         ##########            end           ##########
