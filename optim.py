@@ -92,8 +92,8 @@ class SGD(Optimizer):
                 else:
                     # print("param.grad is: {}".format(param.grad))
                     # print("v_prev is: {}".format(v_prev))
-                    param.velocity =  self.mu * v_prev + param.grad
-                    descent = param.grad * self.learning_rate - param.velocity *self.mu * self.learning_rate
+                    param.velocity = self.mu * v_prev - self.learning_rate * param.grad
+                    descent = param.velocity
 
 
                     #reference: https://github.com/hero9968/PaddlePaddle-book/blob/1ff47b284c565d030b198705d5f18b4bd4ce53e5/python/paddle/v2/fluid/tests/test_momentum_op.py

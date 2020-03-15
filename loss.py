@@ -38,7 +38,7 @@ class MSELoss(Loss):
     def diff_loss(self, pred, target):
         ########## (E4) Your code goes here ##########
         # delta = (-2//len(target))* (target-pred)
-        delta = target - pred
+        delta = pred-target
         # print("delta from derivative of MSE Loss: {}".format(delta))
         return delta
         ##########            end           ##########
@@ -59,24 +59,24 @@ class CrossEntropyLoss(Loss):
         loss1 = -np.sum(np.dot(target.T, np.logaddexp(0, -pred)) + np.dot((1-target).T, np.logaddexp(0, pred)))
 
         #option 2 from https://deepnotes.io/softmax-crossentropy#cross-entropy-loss
-        X = pred
-        y = target
-        y = y.argmax(axis=1)
-        m = y.shape[0]
-        p = softmax(X)
+        # X = pred
+        # y = target
+        # y = y.argmax(axis=1)
+        # m = y.shape[0]
+        # p = softmax(X)
         # print("m is:{}".format(m))
         # We use multidimensional array indexing to extract
         # softmax probability of the correct label for each sample.
         # Refer to https://docs.scipy.org/doc/numpy/user/basics.indexing.html#indexing-multi-dimensional-arrays for understanding multidimensional array indexing.
-        log_likelihood = -np.log(p[range(m), y])
-        loss2 = np.sum(log_likelihood) / m
+        # log_likelihood = -np.log(p[range(m), y])
+        # loss2 = np.sum(log_likelihood) / m
 
         #option 3
-        pred = softmax(pred)
+        # pred = softmax(pred)
         # loss3 = np.sum(-np.dot(target.T, np.log(pred)))/m
 
-        loss3 = np.sum(-target * np.log(pred))
-        print("option 3 loss:{}\n".format(loss3/m))
+        # loss3 = np.sum(-target * np.log(pred))
+        # print("option 3 loss:{}\n".format(loss3/m))
 
 
         loss_torch = nn.CrossEntropyLoss()
@@ -87,9 +87,9 @@ class CrossEntropyLoss(Loss):
         pred = Variable(torch.Tensor([pred[0]]))
 
         loss_torch = loss_torch(pred, torch.max(target, 1)[1])
-        # loss = criterion(outputs, torch.max(labels, 1)[1])
-        print("pytorch loss:{}".format(loss_torch))
-        return loss3
+        #https://discuss.pytorch.org/t/runtimeerror-multi-target-not-supported-newbie/10216
+        # print("pytorch loss:{}".format(loss_torch))
+        return loss_torch
 
 
     #Source: https://deepnotes.io/softmax-crossentropy#cross-entropy-loss
@@ -106,7 +106,7 @@ class CrossEntropyLoss(Loss):
         # grad = grad / m
 
         pred = softmax(pred)
-        delta = target - pred
+        delta = pred-target
         # print("Shape of output from dif_loss method in Loss class: {}".format(delta.shape))
         return delta
         ##########            end           ##########
