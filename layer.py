@@ -53,6 +53,12 @@ class FCLayer(Layer):
         self.weights = Parameter(weights)               # instantiate Parameter object by passing the initialized values
         self.bias = Parameter(bias)                     # instantiate Parameter object by passing the initialized values
         self.param = [self.weights, self.bias]
+        self.forward_outputs = []
+        self.backprop_deltas = []
+        self.all_weights = []
+        self.all_weights_grads = []
+        self.all_bias_grads = []
+        self.backward_counter = 0
 
         # print("Weights are: {}".format(self.weights.value))
         # print("Shape of weights matrix is: {}".format(self.weights.value.shape))
@@ -68,7 +74,7 @@ class FCLayer(Layer):
 
         # store the weight and bias to a list
 
-    def forward(self, input_data, mode):
+    def forward(self, input_data, mode=True):
         # print("Inside forward propagation of FCLayer ")
         """
         If self.weights.shape = (in, out), then
@@ -96,6 +102,7 @@ class FCLayer(Layer):
         # print("Weights are:{}".format(self.weights.value))
         # print("Output(U):{}".format(output))
         self.output = output
+        self.forward_outputs.append(output)
         # print("Shape of the forward output (U): {}".format(output.shape))
         ##########            end           ##########
 
@@ -114,10 +121,12 @@ class FCLayer(Layer):
         # print("Input delta_n shape: {}".format(delta_n.shape))
         ########## (E2) Your code goes here ##########
         delta = np.dot(delta_n, self.weights.value.T)
+
         # print("Shape of self.output is: {}".format(self.output.shape))
-        dEdW = np.dot(self.output.T, delta).T #H^{l-1}*\delta^l
+        dEdW = np.dot(self.input_data.T, delta_n) #H^{l-1}*\delta^l
         # print("Shape of 1s vector:{}".format(np.ones((list(delta_n.shape)[0],1)).shape))
-        dEdb = np.dot(np.ones((list(delta_n.shape)[0],1)).T, delta_n)
+        dEdb = np.dot(np.ones((delta_n.shape[0], 1)).T, delta_n)
+        # dEdb = np.dot(np.ones((list(delta_n.shape)[0],1)).T, delta_n)
         #dEdb^L = 1^T\delta^L where delta^L is of dimensions n x m^L
         ##########            end           ##########
 
@@ -126,6 +135,11 @@ class FCLayer(Layer):
         # print("Calculated dEdb shape:{}".format(dEdb.shape))
 
         # Store gradients
+        self.backprop_deltas.append(delta)
+        self.all_weights.append(self.weights.value)
+        self.all_weights_grads.append(dEdW)
+        self.all_bias_grads.append(dEdb)
+
         self.weights.grad = dEdW
         self.bias.grad = dEdb
         return delta

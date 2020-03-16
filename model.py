@@ -9,6 +9,10 @@ class NeuralNetwork:
         self.loss = None        # the loss function
         self.diff_loss = None   # and its derivative
         self.optimizer = None
+        self.total_deltas = []
+        self.total_preds = []
+        self.total_targets = []
+        self.total_deltas_backward = []
 
     def set_optimizer(self, opt):
         # print("Inside set_optimizer of NeuralNetwork")
@@ -80,6 +84,11 @@ class NeuralNetwork:
         """
         # Take derivative of the loss function
         delta = self.diff_loss(pred, y_true)
+        #this is just pred - y_true for each element
+
+        self.total_deltas.append(delta)
+        self.total_preds.append(pred)
+        self.total_targets.append(y_true)
 
         # Backpropagate the errors
         for l in reversed(self.layers):
@@ -88,3 +97,5 @@ class NeuralNetwork:
             # print("Shape of delta from cross entropy diff_loss is:{} ".format(delta.shape))
             # print("Going backwards, lth layer is:{} \n Current layer is:{}".format(l, type(l)))
             delta = l.backward(delta)
+            self.total_deltas_backward.append(delta)
+

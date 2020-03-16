@@ -44,7 +44,7 @@ class Activation(Layer):
         ########## (E3) Your code goes here ##########
         # print("self is of type: {}".format(type(self)))
         # print("Input delta has shape:{}".format(delta_n.shape))
-        delta = np.multiply(delta_n, sigmoid_prime(self.input_data))
+        delta = np.multiply(delta_n, self.act_prime(self.input_data))
         #delta  =  derivative of the loss * sigmoid prime(layer)
 
         #delta^l = {delta^{l+1}(W^{l+1}}\odot sigmoid_prime(U^l)  # equation 22
