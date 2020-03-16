@@ -29,7 +29,8 @@ class Loss(ABC):
 class MSELoss(Loss):
     def loss(self, pred, target):
         ########## (E4) Your code goes here ##########
-        loss =np.sum((pred - target)**2) / target.size
+        # loss =np.sum((pred - target)**2) / target.size
+        loss = np.square(np.subtract(target, pred)).mean()
         # print("loss from MSE loss:{}".format(loss))
         # print()
         return loss
@@ -38,7 +39,7 @@ class MSELoss(Loss):
     def diff_loss(self, pred, target):
         ########## (E4) Your code goes here ##########
         # delta = (-2//len(target))* (target-pred)
-        delta = pred-target
+        delta = (pred-target)*(2/len(target))
         # print("delta from derivative of MSE Loss: {}".format(delta))
         return delta
         ##########            end           ##########
