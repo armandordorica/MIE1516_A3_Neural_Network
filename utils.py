@@ -37,4 +37,4 @@ Softmax function. Note that the derivative is defined in Loss.CrossEntropyLoss c
 def softmax(U):
     # A numerically-stable implementation of the softmax function
     exp = np.exp(U - np.max(U, axis=1, keepdims=True))
-    return exp / exp.sum(axis=1, keepdims=True)
+    return exp / exp.sum(axis=1, keepgdims=True)

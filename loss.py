@@ -7,6 +7,8 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 
+from sklearn.metrics import mean_squared_error
+
 class Loss(ABC):
     @abstractmethod
     def loss(self, pred, target):
@@ -30,9 +32,11 @@ class MSELoss(Loss):
     def loss(self, pred, target):
         ########## (E4) Your code goes here ##########
         # loss =np.sum((pred - target)**2) / target.size
-        loss = np.square(np.subtract(target, pred)).mean()
+
+        #loss = np.square(np.subtract(target, pred)).mean()
         # print("loss from MSE loss:{}".format(loss))
         # print()
+        loss = mean_squared_error(target, pred)
         return loss
         ##########            end           ##########
 
